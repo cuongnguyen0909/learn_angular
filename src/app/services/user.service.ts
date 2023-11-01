@@ -21,8 +21,8 @@ export class UserService {
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
-  public addStock(user: User): Observable<any> {
-    const url = `${this.REST_API_SERVER}/stocks`;
+  public addUser(user: User): Observable<any> {
+    const url = `${this.REST_API_SERVER}/users`;
     return this.httpClient.post<any>(url, user, this.httpOptions);
   }
 
