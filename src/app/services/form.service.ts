@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FormServiceService {
+export class FormService {
   public formMesageSubject = new BehaviorSubject<any>(null);
   constructor() { }
 

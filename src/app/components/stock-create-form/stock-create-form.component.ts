@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
-import { FormServiceService } from 'src/app/services/form-service.service';
+import { FormService } from 'src/app/services/form.service';
 import { ServerHttpService } from 'src/app/services/server-http.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class StockCreateFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private serverHttpService: ServerHttpService,
     private router: Router,
-    private formService: FormServiceService) {
+    private formService: FormService) {
     this.stockForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       code: ['', [Validators.required, Validators.minLength(3)]],

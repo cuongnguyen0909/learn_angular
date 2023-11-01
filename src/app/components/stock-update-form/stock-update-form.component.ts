@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
-import { FormServiceService } from 'src/app/services/form-service.service';
+import { FormService } from 'src/app/services/form.service';
 import { ServerHttpService } from 'src/app/services/server-http.service';
 
 @Component({

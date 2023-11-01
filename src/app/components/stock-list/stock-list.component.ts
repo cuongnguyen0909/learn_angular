@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
-import { FormServiceService } from 'src/app/services/form-service.service';
+import { FormService } from 'src/app/services/form.service';
 import { ServerHttpService } from 'src/app/services/server-http.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class StockListComponent implements OnInit {
 
   constructor(private serverHttpService: ServerHttpService,
     private router: Router,
-    private formService: FormServiceService) { }
+    private formService: FormService) { }
 
   ngOnInit(): void {
     this.loadData();
