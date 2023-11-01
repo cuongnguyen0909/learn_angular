@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+.stock-card {
+    border: 1px solid #e0e0e0;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+.stock-card:hover {
+    background-color: #e0e0e0;
+}
+
+.stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.stock-code {
+    background-color: #57b465;
+    color: #39503e;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.stock-body {
+    margin-bottom: 15px;
+}
+
+.stock-footer {
+    margin-top: 15px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#unfavorite {
+    color: red;
+}
+
+.hide {
+    display: none;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: flex-start
+}
+
+.icon-container i {
+    cursor: pointer;
+}
+
+#create-stock {
+    margin-top: 28px;
+    width: 200px;
+    height: 30px;
+    border: 3px solid #315cfd;
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: white;
+    font-size: 18px;
+    font-weight: 550;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#create-stock:hover {
+    background: #315cfd;
+    color: white;
+    font-size: 18px;
+}

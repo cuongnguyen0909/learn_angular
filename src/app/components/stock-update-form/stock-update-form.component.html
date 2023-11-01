@@ -1,0 +1,64 @@
+<div>
+    <h1>UPDATE A STOCK</h1>
+    <h2>{{message}}</h2>
+    <form [formGroup]="stockForm" (ngSubmit)="onSubmit()" class="stock-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control">
+            <p class="error"
+                *ngIf="stockForm.get('name')?.hasError('required') && (stockForm.get('name')?.dirty || stockForm.get('name')?.touched)">
+                Name is required</p>
+            <p class="error" *ngIf="stockForm.get('name')?.hasError('minLength')">
+                Name must be at least 6 characters long
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="code">Code</label>
+            <input type="text" id="code" formControlName="code" class="form-control">
+            <p
+                *ngIf="stockForm.get('code')?.hasError('required') && (stockForm.get('code')?.dirty || stockForm.get('code')?.touched)">
+                Code is required</p>
+            <p class="error" *ngIf="stockForm.get('code')?.hasError('minLength')">
+                Code must be at least 3 characters long
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" id="price" formControlName="price" class="form-control">
+            <p class="error"
+                *ngIf="stockForm.get('price')?.hasError('required') && (stockForm.get('price')?.dirty || stockForm.get('price')?.touched)">
+                Price is required</p>
+            <p class="error"
+                *ngIf="stockForm.get('price')?.hasError('min') && (stockForm.get('price')?.dirty || stockForm.get('price')?.touched)">
+                Price must be a positive number</p>
+        </div>
+        <div class="form-group">
+            <label for="previousPrice">Previous Price</label>
+            <input type="number" id="previousPrice" formControlName="previousPrice" class="form-control">
+            <p class="error"
+                *ngIf="stockForm.get('previousPrice')?.hasError('required') && (stockForm.get('previousPrice')?.dirty || stockForm.get('previousPrice')?.touched)">
+                Previous price is required</p>
+            <p class="error"
+                *ngIf="stockForm.get('previousPrice')?.hasError('min') && (stockForm.get('previousPrice')?.dirty || stockForm.get('previousPrice')?.touched)">
+                Previous price must be a positive number</p>
+        </div>
+        <div class="form-group">
+            <label for="exchange">Exchange</label>
+            <select id="exchange" formControlName="exchange" class="form-control">
+                <option value="">Select an exchange</option>
+                <option *ngFor="let exchange of exchanges" value={{exchange}}>{{exchange}}</option>
+            </select>
+            <p class="error"
+                *ngIf="stockForm.get('exchange')?.hasError('required') && (stockForm.get('exchange')?.dirty || stockForm.get('exchange')?.touched)">
+                Exchange is required</p>
+        </div>
+        <div class="favorite">
+            <label for="favorite">Favorite</label>
+            <input type="checkbox" id="favorite" formControlName="favorite" class="form-control">
+        </div>
+        <div class="button-update">
+            <button type="submit" [disabled]="!stockForm.valid" class="submit-button">Save</button>
+            <button class="update-button" (click)="backToHome()">Back to home</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,10 @@
+app-stock-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}

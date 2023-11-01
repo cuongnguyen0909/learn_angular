@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="title">Stock Detail</div>
+    <div class="detail">
+        <span class="label">ID: </span> <span id="stock-id">{{stock?.id}}</span>
+    </div>
+    <div class="detail">
+        <span class="label">Name: </span> <span id="stock-name">{{stock?.name}}</span>
+    </div>
+    <div class="detail">
+        <span class="label">Code: </span> <span id="stock-code">{{stock?.code}}</span>
+    </div>
+    <div class="detail">
+        <span class="label">Price: </span> <span id="stock-price">{{stock?.price|currency}}</span>
+    </div>
+    <div class="detail">
+        <span class="label">Previous Price:</span> <span
+            id="stock-previous-price">{{stock?.previousPrice|currency}}</span>
+    </div>
+    <div class="detail">
+        <span class="label">Exchange: </span> <span id="stock-exchange">{{stock?.exchange}}</span>
+    </div>
+    <div class="detail">
+        <span class="label">Favorite: </span> <span id="stock-favorite">{{stock?.favorite}}</span>
+    </div>
+
+    <div class="container-button">
+        <div>
+            <button class="update-button" (click)="updateStock(stock!.id)">Update</button>
+        </div>
+        <div>
+            <button class="delete-button" (click)="deleteStock(stock!.id)">Delete</button>
+        </div>
+    </div>
+</div>

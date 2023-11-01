@@ -1,0 +1,10 @@
+<div class="topnav" [class.hide]="!isLoggedIn">
+    <div>
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a>
+        <a [routerLink]="['/favorite-stocks']" routerLinkActive="router-link-active">Favorite Stock List</a>
+    </div>
+    <div>
+        <a href="">Logout</a>
+    </div>
+</div>
+<router-outlet></router-outlet>

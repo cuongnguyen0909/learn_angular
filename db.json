@@ -1,0 +1,116 @@
+{
+  "stocks": [
+    {
+      "name": "Google Stock Company",
+      "code": "GSC",
+      "price": 1234,
+      "previousPrice": 12314,
+      "exchange": "NYSE",
+      "favorite": true,
+      "id": 1
+    },
+    {
+      "name": "Facebook Stock Company",
+      "code": "FaSC",
+      "price": 1234,
+      "previousPrice": 12314,
+      "exchange": "NYSE",
+      "favorite": false,
+      "id": 2
+    },
+    {
+      "name": "Tiktok Stock Company",
+      "code": "TiSC",
+      "price": 1234,
+      "previousPrice": 12314,
+      "exchange": "NYSE",
+      "favorite": false,
+      "id": 3
+    },
+    {
+      "name": "Microsoft Stock Company",
+      "code": "MiSC",
+      "price": 1234,
+      "previousPrice": 12314,
+      "exchange": "NYSE",
+      "favorite": false,
+      "id": 4
+    },
+    {
+      "name": "Twitter X Stock Company",
+      "code": "TwXSC",
+      "price": 1234,
+      "previousPrice": 12314,
+      "exchange": "NYSE",
+      "favorite": false,
+      "id": 5
+    },
+    {
+      "name": "Alibab Stock Company",
+      "code": "AlSC",
+      "price": 1234,
+      "previousPrice": 12314,
+      "exchange": "NYSE",
+      "favorite": false,
+      "id": 6
+    },
+    {
+      "name": "TMA Solution Stock Company",
+      "code": "TMASC",
+      "price": 1234,
+      "previousPrice": 12314,
+      "exchange": "NYSE",
+      "favorite": false,
+      "id": 7
+    },
+    {
+      "name": "FPT Stock Company",
+      "code": "FPTSC",
+      "price": 1562,
+      "previousPrice": 87859,
+      "exchange": "HKEX",
+      "favorite": false,
+      "id": 8
+    },
+    {
+      "name": "Test Stock Company",
+      "code": "TeSSC",
+      "price": 123,
+      "previousPrice": 2323,
+      "exchange": "NYSE",
+      "favorite": true,
+      "id": 9
+    },
+    {
+      "name": "Test Stock Company 1",
+      "code": "TeSSC1",
+      "price": 434,
+      "previousPrice": 3434,
+      "exchange": "NYSE",
+      "favorite": true,
+      "id": 10
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": 2,
+      "username": "cuong",
+      "password": "cuong123"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

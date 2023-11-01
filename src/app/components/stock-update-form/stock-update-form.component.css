@@ -1,0 +1,71 @@
+h2 {
+    color: green;
+}
+
+.stock-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+}
+
+.error input {
+    border-color: red;
+}
+
+.submit-button,
+.update-button {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-button {
+    margin-left: 28px;
+}
+
+.submit-button:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+.button-update {
+    display: flex;
+    margin-top: 28px;
+}
+
+.favorite {
+    display: flex;
+    margin-left: 0;
+}
+
+#favorite {
+    width: 10%;
+}
+
+#exchange {
+    width: 105%;
+}

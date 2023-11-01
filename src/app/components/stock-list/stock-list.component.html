@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div>
+    <button id="create-stock" (click)="addStock()">Create New Stock</button>
+</div>
+<h4 style="color: green; font-weight: bold; font-style: italic;">{{message}}</h4>
+<div class="container">
+    <div *ngFor="let stock of stocks">
+        <div class="stock-card">
+            <div class="stock-header">
+                <h2>{{stock.name}}</h2>
+                <span class="stock-code">{{stock.code}}</span>
+            </div>
+            <div class="stock-body">
+                <p><strong>Price:</strong> {{stock.price | currency}}</p>
+                <p><strong>Previous Price:</strong> {{stock.previousPrice | currency}}</p>
+                <p><strong>Exchange:</strong> {{stock.exchange}}</p>
+            </div>
+            <div class="icon-container">
+                <i style="font-size: 24px;" class="fa-solid fa-heart" (click)="toggleFavorite(stock.id)"
+                    [class.hide]="stock.favorite">
+                </i>
+                <i style="font-size: 24px;" id="unfavorite" class="fa-solid fa-heart"
+                    (click)="toggleUnFavorite(stock.id)" [class.hide]="!stock.favorite">
+                </i>
+                <i style="font-size: 24px; margin-left: 28px" class="fa-regular fa-trash-can"
+                    (click)="deleteStock(stock.id)"></i>
+                <i (click)="updateStock(stock.id)" style="font-size: 24px; margin-left: 28px"
+                    class="fa-regular fa-pen-to-square"></i>
+                <i (click)="stockDetail(stock.id)" style="font-size: 24px; margin-left: 28px"
+                    class="fa-solid fa-info"></i>
+            </div>
+        </div>
+    </div>
+</div>
