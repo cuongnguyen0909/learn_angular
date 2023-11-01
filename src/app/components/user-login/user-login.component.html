@@ -26,7 +26,7 @@
                 <h4 style="text-align: left;color: rgb(175, 78, 46);">{{message}}</h4>
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
-                    <input type="text" class="login__input" placeholder="Username" id="username" #username
+                    <input type="text" class="login__input" placeholder="Username / Email" id="username" #username
                         formControlName="username">
                 </div>
                 <div class="login__field">
@@ -35,9 +35,17 @@
                         formControlName="password">
                 </div>
                 <button type="submit" [disabled]="!loginForm.valid" class="button login__submit">
-                    <span class="button__text">Log In Now</span>
+                    <span class="button__text">Sign In</span>
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>
+                <div class="regiser_container">
+                    <!-- <span>Have you created an account yet?</span> -->
+                    <button class="button register__submit" (click)="registerUser()">
+                        <span class="button__text">Sign up</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
             </form>
         </div>
         <div class="screen__background">

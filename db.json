@@ -96,13 +96,22 @@
       "id": 1,
       "username": "admin",
       "password": "admin",
-      "email": "admin@gmail.com"
+      "email": "admin@gmail.com",
+      "role": "admin"
     },
     {
       "id": 2,
       "username": "cuong",
       "password": "cuong123",
-      "email": "cuong@gmail.com"
+      "email": "cuong@gmail.com",
+      "role": "user"
+    },
+    {
+      "username": "testuser",
+      "email": "testuser@gmail.com",
+      "password": "123456",
+      "id": 3,
+      "role": "user"
     }
   ],
   "comments": [

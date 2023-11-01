@@ -7,6 +7,7 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { StockUpdateFormComponent } from './components/stock-update-form/stock-update-form.component';
 import { StockDetailComponent } from './components/stock-detail/stock-detail.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'favorite-stocks', component: StockFavoriteListComponent },
   { path: 'stock-create-form', component: StockCreateFormComponent },
   { path: 'stock-update-form/:id', component: StockUpdateFormComponent },
-  { path: 'stock-detail/:id', component: StockDetailComponent }
+  { path: 'stock-detail/:id', component: StockDetailComponent },
+  { path: 'register', component: UserRegisterComponent },
+  { path: 'user-list', component: UserListComponent }
 ];
 
 @NgModule({

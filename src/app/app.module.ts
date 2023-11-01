@@ -13,10 +13,11 @@ import { StockFavoriteListComponent } from './components/stock-favorite-list/sto
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 
-import { ServerHttpService } from './services/stock-server-http.service';
+import { StockServerHttpService } from './services/stock-server-http.service';
 import { UserService } from './services/user.service';
 import { StockUpdateFormComponent } from './components/stock-update-form/stock-update-form.component';
 import { StockDetailComponent } from './components/stock-detail/stock-detail.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StockDetailComponent } from './components/stock-detail/stock-detail.com
     UserRegisterComponent,
     UserLoginComponent,
     StockUpdateFormComponent,
-    StockDetailComponent
+    StockDetailComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { StockDetailComponent } from './components/stock-detail/stock-detail.com
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [ServerHttpService, UserService],
+  providers: [StockServerHttpService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
