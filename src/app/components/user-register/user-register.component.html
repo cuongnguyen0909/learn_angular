@@ -1,1 +1,35 @@
-<p>user-register works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+<div class="main-block">
+    <h1>Registration</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+        <!-- <hr>
+        <div class="account-type">
+            <input type="radio" value="none" id="radioOne" name="account" checked />
+            <label for="radioOne" class="radio">Personal</label>
+            <input type="radio" value="none" id="radioTwo" name="account" />
+            <label for="radioTwo" class="radio">Company</label>
+        </div>
+        <hr> -->
+        <label id="icon" for="name"><i class="fas fa-user"></i></label>
+        <input type="text" name="name" id="username" placeholder="User Name" formControlName="username" />
+        <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
+        <input type="text" name="name" id="email" placeholder="Email" formControlName="email" />
+        <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
+        <input type="password" name="name" id="password" placeholder="Password" formControlName="password" />
+        <hr>
+        <!-- <div class="gender">
+            <input type="radio" value="none" id="male" name="gender" checked />
+            <label for="male" class="radio">Male</label>
+            <input type="radio" value="none" id="female" name="gender" />
+            <label for="female" class="radio">Female</label>
+        </div> -->
+        <hr>
+        <div class="btn-block">
+            <!-- <p>By clicking Register, you agree on our <a href="https://www.w3docs.com/privacy-policy">Privacy Policy for
+                    W3Docs</a>.</p> -->
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
