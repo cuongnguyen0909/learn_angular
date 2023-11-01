@@ -8,6 +8,13 @@ body {
     justify-content: space-between;
     overflow: hidden;
     background-color: #333;
+    height: 50px;
+}
+
+.topnav p {
+    float: left;
+    font-size: 17px;
+    color: #ddd;
 }
 
 .topnav a {
@@ -16,8 +23,9 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 19px;
 }
+
 
 .topnav a:hover {
     background-color: #ddd;

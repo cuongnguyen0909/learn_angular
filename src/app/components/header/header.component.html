@@ -1,10 +1,14 @@
 <div class="topnav" [class.hide]="!isLoggedIn">
-    <div>
+    <div class="container_link">
         <a [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a>
         <a [routerLink]="['/favorite-stocks']" routerLinkActive="router-link-active">Favorite Stock List</a>
+        <a [routerLink]="['/user-list']" routerLinkActive="router-link-active" *ngIf="isAdmin">User List</a>
     </div>
-    <div>
-        <a href="">Logout</a>
+    <div class="container_user">
+        <div>
+            <p>Hello, {{user?.username}}</p>
+            <a href="">Logout</a>
+        </div>
     </div>
 </div>
 <router-outlet></router-outlet>
