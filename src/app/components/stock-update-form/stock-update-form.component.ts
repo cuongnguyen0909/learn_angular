@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
 import { FormService } from 'src/app/services/form.service';
-import { ServerHttpService } from 'src/app/services/server-http.service';
+import { StockServerHttpService } from 'src/app/services/stock-server-http.service';
 
 @Component({
   selector: 'app-stock-update-form',
@@ -17,7 +17,7 @@ export class StockUpdateFormComponent implements OnInit {
   public exchanges: string[] = ['NYSE', 'NASDAQ', 'NSE', 'HKEX', 'OTHER'];
 
   constructor(private formBuilder: FormBuilder,
-    private serverHttpService: ServerHttpService,
+    private serverHttpService: StockServerHttpService,
     private router: Router,
     private activeRoute: ActivatedRoute) {
     this.stockForm = this.formBuilder.group({

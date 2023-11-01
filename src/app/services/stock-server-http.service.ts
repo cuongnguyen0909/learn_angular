@@ -6,7 +6,7 @@ import { Stock } from '../models/stock.model';
 @Injectable({
   providedIn: 'root'
 })
-export class ServerHttpService {
+export class StockServerHttpService {
   private REST_API_SERVER = 'http://localhost:3000'
   private httpOptions = {
     headers: new HttpHeaders({
@@ -28,6 +28,7 @@ export class ServerHttpService {
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
+  //create stock
   public addStock(stock: Stock): Observable<any> {
     const url = `${this.REST_API_SERVER}/stocks`;
     return this.httpClient.post<any>(url, stock, this.httpOptions);

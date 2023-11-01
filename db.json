@@ -95,12 +95,14 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "admin"
+      "password": "admin",
+      "email": "admin@gmail.com"
     },
     {
       "id": 2,
       "username": "cuong",
-      "password": "cuong123"
+      "password": "cuong123",
+      "email": "cuong@gmail.com"
     }
   ],
   "comments": [

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
 import { FormService } from 'src/app/services/form.service';
-import { ServerHttpService } from 'src/app/services/server-http.service';
+import { StockServerHttpService } from 'src/app/services/stock-server-http.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -15,7 +15,7 @@ export class StockListComponent implements OnInit {
   public favoriteStocks: Stock[] = [];
   public message: string = '';
 
-  constructor(private serverHttpService: ServerHttpService,
+  constructor(private serverHttpService: StockServerHttpService,
     private router: Router,
     private formService: FormService) { }
 

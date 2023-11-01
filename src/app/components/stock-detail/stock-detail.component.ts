@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
-import { ServerHttpService } from 'src/app/services/server-http.service';
+import { StockServerHttpService } from 'src/app/services/stock-server-http.service';
 
 @Component({
   selector: 'app-stock-detail',
@@ -11,7 +11,7 @@ import { ServerHttpService } from 'src/app/services/server-http.service';
 export class StockDetailComponent implements OnInit {
   public stock: Stock | undefined;
   public id = 0;
-  constructor(private serverHttpService: ServerHttpService,
+  constructor(private serverHttpService: StockServerHttpService,
     private router: Router,
     private activeRoute: ActivatedRoute) {
 

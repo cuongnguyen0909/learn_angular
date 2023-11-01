@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
 import { FormService } from 'src/app/services/form.service';
-import { ServerHttpService } from 'src/app/services/server-http.service';
+import { StockServerHttpService } from 'src/app/services/stock-server-http.service';
 
 @Component({
   selector: 'app-stock-create-form',
@@ -16,7 +16,7 @@ export class StockCreateFormComponent implements OnInit {
   public exchanges: string[] = [];
 
   constructor(private formBuilder: FormBuilder,
-    private serverHttpService: ServerHttpService,
+    private serverHttpService: StockServerHttpService,
     private router: Router,
     private formService: FormService) {
     this.stockForm = this.formBuilder.group({

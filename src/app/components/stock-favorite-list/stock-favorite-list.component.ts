@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Stock } from 'src/app/models/stock.model';
-import { ServerHttpService } from 'src/app/services/server-http.service';
+import { StockServerHttpService } from 'src/app/services/stock-server-http.service';
 
 @Component({
   selector: 'app-stock-favorite-list',
@@ -10,7 +10,7 @@ import { ServerHttpService } from 'src/app/services/server-http.service';
 export class StockFavoriteListComponent implements OnInit {
   public favoriteStocks: Stock[] = [];
 
-  constructor(private serverHttpStockService: ServerHttpService) { }
+  constructor(private serverHttpStockService: StockServerHttpService) { }
   ngOnInit(): void {
     this.loadData();
   }

@@ -13,7 +13,7 @@ import { StockFavoriteListComponent } from './components/stock-favorite-list/sto
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 
-import { ServerHttpService } from './services/server-http.service';
+import { ServerHttpService } from './services/stock-server-http.service';
 import { UserService } from './services/user.service';
 import { StockUpdateFormComponent } from './components/stock-update-form/stock-update-form.component';
 import { StockDetailComponent } from './components/stock-detail/stock-detail.component';
