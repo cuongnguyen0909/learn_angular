@@ -12,8 +12,10 @@
             <label for="radioTwo" class="radio">Company</label>
         </div>
         <hr> -->
+        <h4>{{message}}</h4>
         <label id="icon" for="name"><i class="fas fa-user"></i></label>
-        <input type="text" name="name" id="username" placeholder="User Name" formControlName="username" />
+        <input type="text" name="name" id="username" placeholder="User Name" formControlName="username"
+            #usernameInput />
         <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
         <input type="text" name="name" id="email" placeholder="Email" formControlName="email" />
         <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Stock } from 'src/app/models/stock.model';
 import { User } from 'src/app/models/user';
 import { FormService } from 'src/app/services/form.service';
+import { StockServerHttpService } from 'src/app/services/stock-server-http.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,9 +13,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-
+  public message: String = '';
+  public users: User[] = [];
   public registerForm: FormGroup;
-  constructor(private fb: FormBuilder, private userService: UserService
+  @ViewChild('usernameInput') usernameInput!: ElementRef;
+  constructor(private fb: FormBuilder,
+    private userService: UserService
     , private router: Router, private formService: FormService) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -22,23 +27,51 @@ export class UserRegisterComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+      // console.log(this.users);
+    })
   }
 
   public onSubmit() {
-    let newStock: Object = {};
+    let newUser: User = {
+      id: 0,
+      username: '',
+      password: '',
+      email: '',
+      role: 'user'
+    };
     for (const control in this.registerForm.controls) {
       if (control) {
-        newStock[control as keyof Object] = this.registerForm.controls[control].value;
+        newUser[control as keyof Object] = this.registerForm.controls[control].value;
       }
     }
-    // Gửi dữ liệu lên server
-    this.userService.addUser(newStock as User).subscribe(response => {
+    // Check if username or email already exists
+    const usernameExists = this.users.some(user => user.username === newUser['username']);
+    const emailExists = this.users.some(user => user.email === newUser['email']);
+
+    if (usernameExists) {
+      this.message = 'Username already exists';
+      this.registerForm.reset();
+      this.setFocusToUsername();
+      return;
+    }
+    if (emailExists) {
+      this.message = 'Email already exists';
+      this.registerForm.reset();
+      this.setFocusToUsername();
+      return;
+    }
+    this.userService.addUser({ ...newUser as User, role: "user" }).subscribe(data => {
       this.router.navigate(['/login'])
-      this.formService.sendMesage(`Create new User with username ${response.code} successfully`)
-    });
+      this.formService.sendMesage(`Create ${data.username} successfully`)
+    })
+
+  }
+  private setFocusToUsername(): void {
+    if (this.usernameInput) {
+      this.usernameInput.nativeElement.focus();
+    }
   }
 }
-
