@@ -1,14 +1,22 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <table id="customers">
+    <h4 style="color: green;">{{messageFromUpdateUser}}</h4>
     <tr>
         <th>User Name</th>
         <th>Email</th>
         <th>Password</th>
         <th>Role</th>
+        <th>Action</th>
     </tr>
     <tr *ngFor="let user of users">
         <td>{{user?.username}}</td>
         <td>{{user?.email}}</td>
         <td>{{user?.password}}</td>
         <td>{{user?.role}}</td>
+        <td>
+            <i (click)="updateUser(user.id)" class="fa-solid fa-user-pen"></i>
+        </td>
     </tr>
 </table>

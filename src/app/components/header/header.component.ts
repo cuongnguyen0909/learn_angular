@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     })
     this.formService.dataSubject.subscribe(data => {
       this.user = data;
-      console.log(data);
+      // console.log(data);
     })
     this.authService.isAdminSubject.subscribe(data => {
       this.isAdmin = data;

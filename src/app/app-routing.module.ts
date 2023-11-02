@@ -8,6 +8,7 @@ import { UserRegisterComponent } from './components/user-register/user-register.
 import { StockUpdateFormComponent } from './components/stock-update-form/stock-update-form.component';
 import { StockDetailComponent } from './components/stock-detail/stock-detail.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'stock-update-form/:id', component: StockUpdateFormComponent },
   { path: 'stock-detail/:id', component: StockDetailComponent },
   { path: 'register', component: UserRegisterComponent },
-  { path: 'user-list', component: UserListComponent }
+  { path: 'user-list', component: UserListComponent },
+  { path: 'user-update/:id', component: UserUpdateComponent }
 ];
 
 @NgModule({

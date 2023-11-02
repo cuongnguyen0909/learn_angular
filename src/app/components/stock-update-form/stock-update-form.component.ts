@@ -32,7 +32,6 @@ export class StockUpdateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Number(this.activeRoute.snapshot.paramMap.get('id'));
-
     if (this.id > 0) {
       //load data
       this.loadData(this.id);
@@ -48,7 +47,6 @@ export class StockUpdateFormComponent implements OnInit {
           this.stockForm.controls[controlName].setValue(data[controlName]);
         }
       }
-
     })
   }
 
