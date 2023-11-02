@@ -24,10 +24,11 @@
         <div class="screen__content">
             <form class="login" [formGroup]="loginForm" (ngSubmit)="login(username.value, password.value)">
                 <h4 style="text-align: left;color: rgb(175, 78, 46);">{{message}}</h4>
+                <h4 style="text-align: left;color: rgb(46, 175, 55);">{{messageFormRegister}}</h4>
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
                     <input type="text" class="login__input" placeholder="Username / Email" id="username" #username
-                        formControlName="username">
+                        formControlName="username" #usernameInput>
                 </div>
                 <div class="login__field">
                     <i class="login__icon fas fa-lock"></i>

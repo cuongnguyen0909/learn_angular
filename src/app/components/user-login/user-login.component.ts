@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
@@ -17,6 +17,8 @@ export class UserLoginComponent implements OnInit {
   public isLoggedIn: boolean = false;
   public isAdmin: boolean = false;
   public message: string = '';
+  public messageFormRegister: string = '';
+  @ViewChild('usernameInput') usernameInput!: ElementRef;
   // @Output() loggedInStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(private fb: FormBuilder,
     private userService: UserService,
@@ -32,9 +34,12 @@ export class UserLoginComponent implements OnInit {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });
+    this.formService.formMesageSubject.subscribe(data => {
+      this.messageFormRegister = data;
+    })
   }
 
-  login(username: string, password: string) {
+  public login(username: string, password: string) {
     // Thực hiện kiểm tra username và password với dữ liệu từ server
     for (let user of this.users) {
       if ((user.username === username && user.password === password) || (user.email === username && user.password === password)) {
@@ -60,6 +65,7 @@ export class UserLoginComponent implements OnInit {
       this.loginForm.controls['password'].setValue('');
       this.message = "Username or Password incorrect"
       console.log("Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin đăng nhập.");
+      this.setFocusToUsername();
     }
     // Phát ra sự kiện về trạng thái đăng nhập
     // this.loggedInStatus.emit(this.isLoggedIn);
@@ -67,6 +73,12 @@ export class UserLoginComponent implements OnInit {
 
   public registerUser() {
     this.router.navigate(['/register']);
+  }
+
+  private setFocusToUsername(): void {
+    if (this.usernameInput) {
+      this.usernameInput.nativeElement.focus();
+    }
   }
 }
 
