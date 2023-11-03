@@ -16,6 +16,4 @@ export class AuthService {
   public sendIsAdmin(isAdmin: boolean) {
     this.isAdminSubject.next(isAdmin);
   }
-
-
 }

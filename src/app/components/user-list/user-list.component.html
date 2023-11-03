@@ -3,6 +3,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <table id="customers">
     <h4 style="color: green;">{{messageFromUpdateUser}}</h4>
+    <h4 style="color: green;">{{message}}</h4>
     <tr>
         <th>User Name</th>
         <th>Email</th>
@@ -17,6 +18,8 @@
         <td>{{user?.role}}</td>
         <td>
             <i (click)="updateUser(user.id)" class="fa-solid fa-user-pen"></i>
+            <i (click)="deleteUser(user.id)" class="fa-solid fa-user-xmark"></i>
         </td>
+
     </tr>
 </table>

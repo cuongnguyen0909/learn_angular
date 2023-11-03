@@ -34,12 +34,13 @@ export class UserLoginComponent implements OnInit {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });
-    this.formService.formMesageSubject.subscribe(data => {
+    this.formService.registerUserMessageSubject.subscribe(data => {
       this.messageFormRegister = data;
     })
   }
 
   public login(username: string, password: string) {
+
     // Thực hiện kiểm tra username và password với dữ liệu từ server
     for (let user of this.users) {
       if ((user.username === username && user.password === password) || (user.email === username && user.password === password)) {
@@ -58,6 +59,8 @@ export class UserLoginComponent implements OnInit {
 
     // Nếu đăng nhập thành công, chuyển hướng sang trang home
     if (this.isLoggedIn) {
+      this.message = `User ${username} login successfully!`
+      this.formService.sendLoginMesage(this.message);
       this.router.navigate(['/home']);
     } else {
       // Xử lý khi đăng nhập không thành công, ví dụ hiển thị thông báo lỗi

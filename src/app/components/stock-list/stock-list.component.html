@@ -4,7 +4,8 @@
 <div>
     <button id="create-stock" (click)="addStock()">Create New Stock</button>
 </div>
-<h4 style="color: green; font-weight: bold; font-style: italic;">{{message}}</h4>
+<h4 style="color: green; font-weight: bold; font-style: italic;" *ngIf="!isUpdated">{{messageFromLogin}}</h4>
+<h4 style="color: green; font-weight: bold; font-style: italic;" *ngIf="!isUpdated">{{messageFromDeleteStock}}</h4>
 <div class="container">
     <div *ngFor="let stock of stocks">
         <div class="stock-card">
@@ -25,9 +26,11 @@
                     (click)="toggleUnFavorite(stock.id)" [class.hide]="!stock.favorite">
                 </i>
                 <i style="font-size: 24px; margin-left: 28px" class="fa-regular fa-trash-can"
-                    (click)="deleteStock(stock.id)"></i>
+                    (click)="deleteStock(stock.id)" [class.disabled]="!isAdmin"
+                    [style.pointer-events]="isAdmin ? 'auto' : 'none'"></i>
                 <i (click)="updateStock(stock.id)" style="font-size: 24px; margin-left: 28px"
-                    class="fa-regular fa-pen-to-square"></i>
+                    class="fa-regular fa-pen-to-square" [class.disabled]="!isAdmin"
+                    [style.pointer-events]="isAdmin ? 'auto' : 'none'"></i>
                 <i (click)="stockDetail(stock.id)" style="font-size: 24px; margin-left: 28px"
                     class="fa-solid fa-info"></i>
             </div>

@@ -13,20 +13,37 @@ export class UserListComponent implements OnInit {
 
   public users: User[] = [];
   public messageFromUpdateUser: string = '';
+  public message: string = '';
   constructor(private userService: UserService, private router: Router, private formService: FormService) {
 
   }
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(data => {
-      this.users = data;
-    })
-
-    this.formService.formMesageSubject.subscribe(data => {
+    this.loadData();
+    this.formService.updateUserMessageSubject.subscribe(data => {
       this.messageFromUpdateUser = data;
     })
   }
+
+  public loadData() {
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+      console.log(data);
+    })
+  }
+
   public updateUser(userId: number) {
     this.router.navigate(['/user-update', userId])
     console.log(userId);
+  }
+
+  public deleteUser(userID: number) {
+    this.userService.deleteStock(userID).subscribe((data) => {
+      // console.log(data);
+      this.loadData();
+      const currentUser = this.users.find(user => user.id === userID);
+      this.message = `Delet ${currentUser?.username} succesfully!`
+      // console.log(currentUser);
+      this.messageFromUpdateUser = '';
+    })
   }
 }

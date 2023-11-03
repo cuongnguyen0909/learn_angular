@@ -40,7 +40,8 @@ export class UserRegisterComponent implements OnInit {
       username: '',
       password: '',
       email: '',
-      role: 'user'
+      role: 'user',
+      favoriteStocks: [],
     };
     for (const control in this.registerForm.controls) {
       if (control) {
@@ -65,7 +66,7 @@ export class UserRegisterComponent implements OnInit {
     }
     this.userService.addUser({ ...newUser as User, role: "user" }).subscribe(data => {
       this.router.navigate(['/login'])
-      this.formService.sendMesage(`Create ${data.username} successfully`)
+      this.formService.sendRegisterUserMesage(`Create ${data.username} successfully`)
     })
 
   }

@@ -42,7 +42,7 @@ export class StockCreateFormComponent implements OnInit {
     // Gửi dữ liệu lên server
     this.serverHttpService.addStock(newStock as Stock).subscribe(response => {
       this.router.navigate(['/home'])
-      this.formService.sendMesage(`Create new Stock with code ${response.code} successfully`)
+      this.formService.sendCreateStockMessage(`Create new Stock with code ${response.code} successfully`)
     });
   }
 }

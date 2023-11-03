@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/models/stock.model';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { FormService } from 'src/app/services/form.service';
 import { StockServerHttpService } from 'src/app/services/stock-server-http.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -13,22 +16,53 @@ export class StockListComponent implements OnInit {
   // @Input() message = ''
   public stocks: Stock[] = [];
   public favoriteStocks: Stock[] = [];
-  public message: string = '';
+  public messageFromLogin: string = '';
+  // public messageFromUpdateStock: string = '';
+  public messageFromDeleteStock: string = '';
+  public isUpdated: boolean = false;
+  public users: User[] = [];
+  public isAdmin: boolean = false;
 
-  constructor(private serverHttpService: StockServerHttpService,
+
+  constructor(private stockService: StockServerHttpService,
     private router: Router,
-    private formService: FormService) { }
+    private formService: FormService,
+    private userService: UserService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadData();
-    this.formService.formMesageSubject.subscribe(data => {
-      this.message = data;
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    })
+    this.formService.loginMessageSubject.subscribe(data => {
+      this.messageFromLogin = data;
+    })
+    this.formService.updateUserMessageSubject.subscribe(data => {
+      if (data) {
+        // this.messageFromUpdateStock = data;
+        this.messageFromLogin = '';
+        this.messageFromDeleteStock = '';
+      }
+    })
+    this.formService.deleteStockMessageSubject.subscribe(data => {
+      if (data) {
+        // this.messageFromUpdateStock = '';
+        this.messageFromLogin = '';
+        this.messageFromDeleteStock = data;
+      }
+    })
+    this.formService.updateStockMessageSubject.subscribe(data => {
+      this.isUpdated = data;
+    })
+    this.authService.isAdminSubject.subscribe(data => {
+      this.isAdmin = data;
     })
   }
 
   //load data when CRUD
   public loadData() {
-    this.serverHttpService.getStocks().subscribe((data) => {
+    this.stockService.getStocks().subscribe((data) => {
       console.log(this.stocks);
       this.stocks = data;
       this.updateFavoriteStocks();
@@ -42,8 +76,8 @@ export class StockListComponent implements OnInit {
       //clone stock at index existed
       const updatedStock = { ...stock, favorite: true };
       //call medthod update from service
-      this.serverHttpService.updateFavorite(stockID, true).subscribe((data) => {
-        console.log('Favorite updated on the server', data);
+      this.stockService.updateFavorite(stockID, true).subscribe((data) => {
+        // console.log('Favorite updated on the server', data);
         // Update the local stocks array with the updated stock
         const index = this.stocks.findIndex((item) => item.id === stockID);
         if (index !== -1) {
@@ -58,8 +92,8 @@ export class StockListComponent implements OnInit {
     const stock = this.stocks.find((item) => item.id === stockID);
     if (stock) {
       const updatedStock = { ...stock, favorite: false };
-      this.serverHttpService.updateFavorite(stockID, false).subscribe((data) => {
-        console.log('Favorite updated on the server', data);
+      this.stockService.updateFavorite(stockID, false).subscribe((data) => {
+        // console.log('Favorite updated on the server', data);
         // Update the local stocks array with the updated stock
         const index = this.stocks.findIndex((item) => item.id === stockID);
         if (index !== -1) {
@@ -71,8 +105,10 @@ export class StockListComponent implements OnInit {
 
   //delete stock
   public deleteStock(stockID: number) {
-    this.serverHttpService.deleteStock(stockID).subscribe((data) => {
-      console.log(data);
+    this.stockService.deleteStock(stockID).subscribe((data) => {
+      // console.log(data);
+      const currentStock = this.stocks.find(stock => stock.id === stockID);
+      this.formService.sendDeleteStockMessage(`Delete Stock '${currentStock?.name}' successfully`);
       this.loadData();
     })
   }

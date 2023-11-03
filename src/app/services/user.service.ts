@@ -20,18 +20,25 @@ export class UserService {
     const url = `${this.REST_API_SERVER}/users`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
+  
   public getUser(userID: number): Observable<any> {
     const url = `${this.REST_API_SERVER}/users/${userID}`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
+
   public addUser(user: User): Observable<any> {
     const url = `${this.REST_API_SERVER}/users`;
     return this.httpClient.post<any>(url, user, this.httpOptions);
   }
-  
+
   public updateUser(userID: number, user: User): Observable<any> {
     const url = `${this.REST_API_SERVER}/users/${userID}`;
     return this.httpClient.put(url, user, this.httpOptions);
+  }
+
+  public deleteStock(userID: number) {
+    const url = `${this.REST_API_SERVER}/users/${userID}`;
+    return this.httpClient.delete<any>(url);
   }
 
 }

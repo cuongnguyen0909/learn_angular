@@ -53,7 +53,8 @@ export class UserUpdateComponent implements OnInit {
       username: '',
       password: '',
       email: '',
-      role: 'user'
+      role: 'user',
+      favoriteStocks: [],
     };
     for (const control in this.userUpdateForm.controls) {
       if (control) {
@@ -85,7 +86,7 @@ export class UserUpdateComponent implements OnInit {
     this.userService.updateUser(this.id, newUser as User).subscribe(data => {
       this.message = `Update ${data.username} suceessuly`;
       this.router.navigate(['/user-list']);
-      this.formService.sendMesage(this.message);
+      this.formService.sendUpdateUserMesage(this.message);
     })
     //   // , (err) => {
     //   // }

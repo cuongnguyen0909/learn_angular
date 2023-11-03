@@ -19,7 +19,8 @@ export class StockUpdateFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private serverHttpService: StockServerHttpService,
     private router: Router,
-    private activeRoute: ActivatedRoute) {
+    private activeRoute: ActivatedRoute,
+    private formService: FormService) {
     this.stockForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       code: ['', [Validators.required, Validators.minLength(3)]],
@@ -36,6 +37,8 @@ export class StockUpdateFormComponent implements OnInit {
       //load data
       this.loadData(this.id);
     }
+
+
   }
 
   //Load dato to form
@@ -61,6 +64,7 @@ export class StockUpdateFormComponent implements OnInit {
     // Gửi dữ liệu lên server
     this.serverHttpService.updateStock(this.id, newStock as Stock).subscribe(response => {
       // this.router.navigate(['/']);
+      this.formService.sendUpdateStock(true);
       this.message = `Update stock ${response.name} suceessuly`;
     }
       // , (err) => {
